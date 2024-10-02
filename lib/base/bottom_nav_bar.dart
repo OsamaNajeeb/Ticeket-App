@@ -1,3 +1,4 @@
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,28 +10,59 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
+
+
+  final appScreens = [
+    const Center(child: Text("Home")),
+    const Center(child: Text("Search")),
+    const Center(child: Text("Tickets")),
+    const Center(child: Text("Profile"))
+  ];
+
+  int _selectedIndex = 0; // Track the selected index
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index; // Update the selected index
+      print("Tapped index is: $_selectedIndex");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("data"),
+        title: const Center(child: Text("Title")),
       ),
-      body: Center(
-        child: Text("small data"),
-      ),
+      body: appScreens[_selectedIndex], // Dynamically show the selected screen
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex, // Set the current index
         selectedItemColor: Colors.blueGrey,
-          unselectedItemColor: Colors.red,
-          showSelectedLabels: false,
-          items: const[
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(icon: Icon(Icons.search),
-                label: "Search"),
-            BottomNavigationBarItem(icon: Icon(Icons.airplane_ticket),
-                label: "Ticket"),
-            BottomNavigationBarItem(icon: Icon(Icons.person),
-                label: "Profile"),
-          ],
+        unselectedItemColor: Colors.red,
+        showSelectedLabels: false,
+        onTap: _onItemTapped, // Handle item tap
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(FluentSystemIcons.ic_fluent_home_regular),
+            activeIcon: Icon(FluentSystemIcons.ic_fluent_home_filled),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FluentSystemIcons.ic_fluent_search_regular),
+            activeIcon: Icon(FluentSystemIcons.ic_fluent_search_filled),
+            label: "Search",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FluentSystemIcons.ic_fluent_ticket_regular),
+            activeIcon: Icon(FluentSystemIcons.ic_fluent_ticket_filled),
+            label: "Ticket",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FluentSystemIcons.ic_fluent_person_regular),
+            activeIcon: Icon(FluentSystemIcons.ic_fluent_person_filled),
+            label: "Profile",
+          ),
+        ],
       ),
     );
   }
