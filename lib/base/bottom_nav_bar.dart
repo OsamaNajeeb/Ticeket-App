@@ -25,16 +25,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index; // Update the selected index
-      print("Tapped index is: $_selectedIndex");
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(child: Text("Title")),
-      ),
       body: appScreens[_selectedIndex], // Dynamically show the selected screen
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex, // Set the current index
