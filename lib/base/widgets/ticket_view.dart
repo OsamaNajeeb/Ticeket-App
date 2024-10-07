@@ -8,22 +8,25 @@ import 'package:ticket_app/base/widgets/text_style_fourth.dart';
 import 'package:ticket_app/base/widgets/text_style_third.dart';
 
 class TicketView extends StatelessWidget {
-  const TicketView({super.key});
+  final Map<String, dynamic> ticket;
+  final bool wholeAssScreen;
+  const TicketView(
+      {super.key, required this.ticket, this.wholeAssScreen = false});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     // print(size.width.toInt());
     return SizedBox(
-      width: size.width * 0.85,
+      width: size.width * 0.9,
       height: 210,
       child: Container(
-        margin: const EdgeInsets.only(right: 16),
+        margin: const EdgeInsets.only(right: 0),
         child: Column(
           children: [
             //Blue Section
             Container(
-              margin: const EdgeInsets.only(right: 16),
+              margin:  EdgeInsets.only(right: wholeAssScreen == true?0:16),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                   color: AppStyles.ticketB,
@@ -34,7 +37,7 @@ class TicketView extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const TextStyleThird(text: "NYC"),
+                      TextStyleThird(text: ticket["from"]["code"]),
                       Expanded(child: Container()),
                       const BigDot(),
                       Expanded(
@@ -59,7 +62,7 @@ class TicketView extends StatelessWidget {
                       )),
                       const BigDot(),
                       Expanded(child: Container()),
-                      const TextStyleThird(text: "HOK")
+                      TextStyleThird(text: ticket["to"]["code"])
                     ],
                   ),
                   const SizedBox(
@@ -67,17 +70,17 @@ class TicketView extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      const SizedBox(
+                      SizedBox(
                         width: 100,
-                        child: TextStyleFourth(text: "Toronto"),
+                        child: TextStyleFourth(text: ticket["from"]["name"]),
                       ),
                       Expanded(child: Container()),
-                      const TextStyleFourth(text: "9H 30M"),
+                      TextStyleFourth(text: ticket["flying_time"]),
                       Expanded(child: Container()),
-                      const SizedBox(
+                      SizedBox(
                         width: 100,
                         child: TextStyleFourth(
-                          text: "Honk Kong",
+                          text: ticket["to"]["name"],
                           align: TextAlign.end,
                         ),
                       )
@@ -88,7 +91,7 @@ class TicketView extends StatelessWidget {
             ),
             //Circles
             Container(
-              margin: const EdgeInsets.only(right: 16),
+              margin: EdgeInsets.only(right: wholeAssScreen == true?0:16),
               height: 20,
               color: AppStyles.ticketO,
               child: const Row(
@@ -109,36 +112,36 @@ class TicketView extends StatelessWidget {
             ),
             //Orange Section
             Container(
-              margin: const EdgeInsets.only(right: 16),
+              margin: EdgeInsets.only(right: wholeAssScreen == true?0:16),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                   color: AppStyles.ticketO,
                   borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(21),
                       bottomRight: Radius.circular(21))),
-              child: const Column(
+              child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       AppColumnTextLayout(
-                        topV: "3 Jun",
+                        topV: ticket["date"],
                         botV: "Date",
                         alignment: CrossAxisAlignment.start,
                       ),
                       AppColumnTextLayout(
-                        topV: "07:10 AM",
+                        topV: ticket["departure_time"],
                         botV: "Departure Time",
                         alignment: CrossAxisAlignment.center,
                       ),
                       AppColumnTextLayout(
-                        topV: "L32",
+                        topV: ticket["number"].toString(),
                         botV: "Flight ID",
                         alignment: CrossAxisAlignment.end,
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 3,
                   ),
                 ],

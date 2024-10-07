@@ -2,6 +2,7 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/res/media.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
+import 'package:ticket_app/base/utils/all_json.dart';
 import 'package:ticket_app/base/widgets/app_double_text.dart';
 import 'package:ticket_app/base/widgets/ticket_view.dart';
 
@@ -16,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppStyles.bgColour,
+      backgroundColor: AppStyles.bgColour,
       body: ListView(
         children: [
           const SizedBox(height: 40),
@@ -27,11 +28,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                     Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Good Morning", style: AppStyles.headLineStyle3),
-                        const SizedBox(height: 5,),
+                        const SizedBox(
+                          height: 5,
+                        ),
                         Text("Book Tickets", style: AppStyles.headLineStyle1)
                       ],
                     ),
@@ -39,35 +42,55 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: 50,
                       height: 50,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: const DecorationImage(
-                            image: AssetImage(AppMedia.logo))
-                      ),
+                          borderRadius: BorderRadius.circular(10),
+                          image: const DecorationImage(
+                              image: AssetImage(AppMedia.logo))),
                     )
                   ],
                 ),
                 const SizedBox(height: 25),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12,
-                      vertical: 12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10),
                     color: const Color(0xFFF4F6FD),
                   ),
                   child: const Row(
-                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(FluentSystemIcons.ic_fluent_search_regular,
-                      color: Color(0xFFBFC205),),
+                      Icon(
+                        FluentSystemIcons.ic_fluent_search_regular,
+                        color: Color(0xFFBFC205),
+                      ),
                       Text("Search")
                     ],
                   ),
                 ),
                 const SizedBox(height: 40),
-                const AppDoubleText(bigT: 'Upcoming Flights',
-                  smallT: 'View all',),
+                AppDoubleText(
+                  func: () => Navigator.pushNamed(context, "/all_tickets"),
+                  bigT: 'Upcoming Flights',
+                  smallT: 'View all',
+                ),
                 const SizedBox(height: 20),
-                const TicketView()
+                SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: ticketList.take(2)
+                          .map((singleTicket) => TicketView(
+                                ticket: singleTicket,
+                              ))
+                          .toList(),
+                    )),
+                const SizedBox(height: 5),
+                AppDoubleText(
+                  func: (){
+                    print("Hotel Tapped");
+                  },
+                  bigT: 'Hotels',
+                  smallT: 'View all',
+                ),
               ],
             ),
           ),
