@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
+import 'package:ticket_app/base/widgets/app_column_text_layout.dart';
 import 'package:ticket_app/base/widgets/app_layoutbuild_wid.dart';
+import 'package:ticket_app/base/widgets/big_circle.dart';
 import 'package:ticket_app/base/widgets/big_dot.dart';
+import 'package:ticket_app/base/widgets/text_style_fourth.dart';
+import 'package:ticket_app/base/widgets/text_style_third.dart';
 
 class TicketView extends StatelessWidget {
   const TicketView({super.key});
@@ -17,6 +21,7 @@ class TicketView extends StatelessWidget {
         margin: const EdgeInsets.only(right: 16),
         child: Column(
           children: [
+            //Blue Section
             Container(
               margin: const EdgeInsets.only(right: 16),
               padding: const EdgeInsets.all(16),
@@ -29,11 +34,7 @@ class TicketView extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Text(
-                        "TOR",
-                        style: AppStyles.headLineStyle3
-                            .copyWith(color: Colors.white),
-                      ),
+                      const TextStyleThird(text: "NYC"),
                       Expanded(child: Container()),
                       const BigDot(),
                       Expanded(
@@ -58,11 +59,7 @@ class TicketView extends StatelessWidget {
                       )),
                       const BigDot(),
                       Expanded(child: Container()),
-                      Text(
-                        "HOK",
-                        style: AppStyles.headLineStyle3
-                            .copyWith(color: Colors.white),
-                      )
+                      const TextStyleThird(text: "HOK")
                     ],
                   ),
                   const SizedBox(
@@ -70,50 +67,47 @@ class TicketView extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text(
-                        "Toronto",
-                        style: AppStyles.headLineStyle3
-                            .copyWith(color: Colors.white),
+                      const SizedBox(
+                        width: 100,
+                        child: TextStyleFourth(text: "Toronto"),
                       ),
                       Expanded(child: Container()),
-                      Text(
-                        "12H 24M",
-                        style: AppStyles.headLineStyle3
-                            .copyWith(color: Colors.white),
-                      ),
+                      const TextStyleFourth(text: "9H 30M"),
                       Expanded(child: Container()),
-                      Text(
-                        "Hong Kong",
-                        style: AppStyles.headLineStyle3
-                            .copyWith(color: Colors.white),
+                      const SizedBox(
+                        width: 100,
+                        child: TextStyleFourth(
+                          text: "Honk Kong",
+                          align: TextAlign.end,
+                        ),
                       )
                     ],
                   )
                 ],
               ),
             ),
+            //Circles
             Container(
               margin: const EdgeInsets.only(right: 16),
               height: 20,
               color: AppStyles.ticketO,
               child: const Row(
                 children: [
-                  SizedBox(
-                    height: 20,
-                    width: 10,
-                    child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(10),
-                            bottomRight: Radius.circular(10)
-                          )
-                        )
-                    ),
-                  )
+                  BigCircle(
+                    isR: false,
+                  ),
+                  Expanded(
+                      child: AppLayoutbuildWid(
+                    randomDivid: 16,
+                    width: 6,
+                  )),
+                  BigCircle(
+                    isR: true,
+                  ),
                 ],
               ),
             ),
+            //Orange Section
             Container(
               margin: const EdgeInsets.only(right: 16),
               padding: const EdgeInsets.all(16),
@@ -122,70 +116,31 @@ class TicketView extends StatelessWidget {
                   borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(21),
                       bottomRight: Radius.circular(21))),
-              child: Column(
+              child: const Column(
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "TOR",
-                        style: AppStyles.headLineStyle3
-                            .copyWith(color: Colors.white),
+                      AppColumnTextLayout(
+                        topV: "3 Jun",
+                        botV: "Date",
+                        alignment: CrossAxisAlignment.start,
                       ),
-                      Expanded(child: Container()),
-                      const BigDot(),
-                      Expanded(
-                          child: Stack(
-                        children: [
-                          const SizedBox(
-                            height: 24,
-                            child: AppLayoutbuildWid(
-                              randomDivid: 6,
-                            ),
-                          ),
-                          Center(
-                            child: Transform.rotate(
-                              angle: 1.57,
-                              child: const Icon(
-                                Icons.airplanemode_active_rounded,
-                                color: Colors.white,
-                              ),
-                            ),
-                          )
-                        ],
-                      )),
-                      const BigDot(),
-                      Expanded(child: Container()),
-                      Text(
-                        "HOK",
-                        style: AppStyles.headLineStyle3
-                            .copyWith(color: Colors.white),
-                      )
+                      AppColumnTextLayout(
+                        topV: "07:10 AM",
+                        botV: "Departure Time",
+                        alignment: CrossAxisAlignment.center,
+                      ),
+                      AppColumnTextLayout(
+                        topV: "L32",
+                        botV: "Flight ID",
+                        alignment: CrossAxisAlignment.end,
+                      ),
                     ],
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 3,
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        "Toronto",
-                        style: AppStyles.headLineStyle3
-                            .copyWith(color: Colors.white),
-                      ),
-                      Expanded(child: Container()),
-                      Text(
-                        "12H 24M",
-                        style: AppStyles.headLineStyle3
-                            .copyWith(color: Colors.white),
-                      ),
-                      Expanded(child: Container()),
-                      Text(
-                        "Hong Kong",
-                        style: AppStyles.headLineStyle3
-                            .copyWith(color: Colors.white),
-                      )
-                    ],
-                  )
                 ],
               ),
             ),

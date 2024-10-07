@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class AppLayoutbuildWid extends StatelessWidget {
   final int randomDivid;
-  const AppLayoutbuildWid({super.key, required this.randomDivid});
+  final double width;
+  const AppLayoutbuildWid({super.key, required this.randomDivid,
+  this.width = 3});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +15,9 @@ class AppLayoutbuildWid extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
           direction: Axis.horizontal,
       children: List.generate((constraint.constrainWidth()
-          / randomDivid).floor(), (index) => const SizedBox(
-        width: 3, height: 1,
-        child: DecoratedBox(decoration: BoxDecoration(
+          / randomDivid).floor(), (index) => SizedBox(
+        width: width, height: 1,
+        child: const DecoratedBox(decoration: BoxDecoration(
         color: Colors.white
       )),
       )));
