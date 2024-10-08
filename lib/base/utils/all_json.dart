@@ -84,3 +84,24 @@ List<Map<String, dynamic>> ticketList = [
     "number":45
   },
 ];
+
+List<Map<String, dynamic>> hotelList = [
+  {
+    'image': 'hotel_room.png',
+    'place': 'Live Comfortably',
+    'destination': 'Syria',
+    'price': 25
+  },
+  {
+    'image': 'city_view.png',
+    'place': 'Eye Catching View',
+    'destination': 'Pakistan',
+    'price': 40
+  },
+  {
+    'image': 'pool_view.png',
+    'place': 'Pristine Waters Await You',
+    'destination': 'Afghanistan',
+    'price': 68
+  },
+];
