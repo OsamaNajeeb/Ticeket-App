@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ticket_app/base/res/media.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
 import 'package:ticket_app/screens/search/widgets/app_text_icon.dart';
 import 'package:ticket_app/screens/search/widgets/app_ticket_tabs.dart';
@@ -40,7 +39,7 @@ class SearchScreen extends StatelessWidget {
             smallT: 'View all',
           ),
           const SizedBox(height: 15),
-          TicketPromotion()
+          const TicketPromotion()
         ],
       ),
     );
