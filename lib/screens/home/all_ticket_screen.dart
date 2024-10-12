@@ -18,12 +18,20 @@ class AllTicketScreen extends StatelessWidget {
           SingleChildScrollView(
             child: Column(
               children: ticketList
-                  .map((singleTicket) => Container(
-                      margin: const EdgeInsets.only(bottom: 20),
-                      child: TicketView(
-                        ticket: singleTicket,
-                        wholeAssScreen: true,
-                      )))
+                  .map((singleTicket) => GestureDetector(
+                        onTap: () {
+                          var index = ticketList.indexOf(singleTicket);
+                          print("I'm Tapped $index");
+                          Navigator.pushNamed(context, "/ticket_view",
+                              arguments: {"index": index});
+                        },
+                        child: Container(
+                            margin: const EdgeInsets.only(bottom: 20),
+                            child: TicketView(
+                              ticket: singleTicket,
+                              wholeAssScreen: true,
+                            )),
+                      ))
                   .toList(),
             ),
           )

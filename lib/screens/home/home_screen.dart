@@ -87,8 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
                 const SizedBox(height: 5),
                 AppDoubleText(
-                  func: (){
-                  },
+                  func: () => Navigator.pushNamed(context, "/all_hotels"),
                   bigT: 'Hotels',
                   smallT: 'View all',
                 ),
@@ -97,9 +96,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   scrollDirection: Axis.horizontal,
                     child: Row(
                       children: hotelList
-                          .map((singleHotel) => Hotel(
-                        hotel: singleHotel,
-                      ))
+                          .map((singleHotel) =>
+                          Hotel(hotel: singleHotel))
                           .toList(),
                     )
                 ),
