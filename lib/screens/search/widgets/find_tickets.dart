@@ -7,7 +7,7 @@ class FindTickets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: AppStyles.findTicketCol

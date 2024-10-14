@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../base/res/styles/app_styles.dart';
@@ -14,7 +13,7 @@ class TicketPositionedCircle extends StatelessWidget {
         right: isStupid==true?null:25,
         top: 247,
         child: Container(
-          padding: EdgeInsets.all(3),
+          padding: const EdgeInsets.all(3),
           decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(width: 2, color: AppStyles.textColor)),
