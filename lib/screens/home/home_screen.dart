@@ -79,9 +79,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      children: ticketList.take(2)
-                          .map((singleTicket) => TicketView(
-                                ticket: singleTicket,
+                      children: ticketList
+                          .take(2)
+                          .map((singleTicket) => GestureDetector(
+                                onTap: () {
+                                  var index = ticketList.indexOf(singleTicket);
+                                  // print("I'm Tapped $index");
+                                  Navigator.pushNamed(context, "/ticket_view",
+                                      arguments: {"index": index});
+                                },
+                                child: TicketView(
+                                  ticket: singleTicket,
+                                ),
                               ))
                           .toList(),
                     )),
@@ -93,14 +102,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const SizedBox(height: 20),
                 SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
+                    scrollDirection: Axis.horizontal,
                     child: Row(
                       children: hotelList
-                          .map((singleHotel) =>
-                          Hotel(hotel: singleHotel))
+                          .map((singleHotel) => Hotel(hotel: singleHotel))
                           .toList(),
-                    )
-                ),
+                    )),
               ],
             ),
           ),
