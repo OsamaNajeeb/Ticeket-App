@@ -1,6 +1,7 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
+import 'package:ticket_app/base/widgets/app_column_text_layout.dart';
 import 'package:ticket_app/base/widgets/heading_text.dart';
 
 import '../../base/res/media.dart';
@@ -80,7 +81,8 @@ class ProfileScreen extends StatelessWidget {
                   Text(
                     "Edit",
                     style: TextStyle(
-                        color: AppStyles.primaryColor, fontWeight: FontWeight.bold  ),
+                        color: AppStyles.primaryColor,
+                        fontWeight: FontWeight.bold),
                   ),
                   Icon(Icons.edit, color: AppStyles.primaryColor, size: 20)
                 ],
@@ -158,17 +160,118 @@ class ProfileScreen extends StatelessWidget {
                   right: -50,
                   child: Container(
                     padding: const EdgeInsets.all(30),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(width: 18, color: const Color(0xFF264CD2))
-                ),
-              ))
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            width: 18, color: const Color(0xFF264CD2))),
+                  ))
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text("Accumulated Miles", style: AppStyles.headLineStyle2),
           Container(
-
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(18),
+                color: AppStyles.bgColour),
+            child: Column(
+              children: [
+                const SizedBox(height: 10),
+                Text(
+                  "192802",
+                  style: TextStyle(
+                      fontSize: 45,
+                      color: AppStyles.textColor,
+                      fontWeight: FontWeight.w600),
+                ),
+                const SizedBox(height: 10),
+                //row>text
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "KM traveled",
+                      style: AppStyles.headLineStyle4.copyWith(
+                        fontSize: 16
+                      ),
+                    ),
+                    Text(
+                      "16th July",
+                      style: AppStyles.headLineStyle4.copyWith(fontSize: 16),
+                    )
+                  ],
+                ),
+                const Divider(color: Colors.black),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AppColumnTextLayout(
+                      topV: "23 042",
+                      botV: "Kilometers",
+                      alignment: CrossAxisAlignment.start,
+                      isColor: false,
+                    ),
+                    AppColumnTextLayout(
+                      topV: "Airline Co",
+                      botV: "Received From",
+                      alignment: CrossAxisAlignment.end,
+                      isColor: false,
+                    ),
+                  ],
+                ),
+                //row>column
+                Divider(color: Colors.grey.shade300),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AppColumnTextLayout(
+                      topV: "52 199",
+                      botV: "Kilometers",
+                      alignment: CrossAxisAlignment.start,
+                      isColor: false,
+                    ),
+                    AppColumnTextLayout(
+                      topV: "DDFTSH",
+                      botV: "Received From",
+                      alignment: CrossAxisAlignment.end,
+                      isColor: false,
+                    ),
+                  ],
+                ),
+                //row>column
+                Divider(color: Colors.grey.shade300),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AppColumnTextLayout(
+                      topV: "10 842",
+                      botV: "Kilometers",
+                      alignment: CrossAxisAlignment.start,
+                      isColor: false,
+                    ),
+                    AppColumnTextLayout(
+                      topV: "McDonald",
+                      botV: "Received From",
+                      alignment: CrossAxisAlignment.end,
+                      isColor: false,
+                    ),
+                  ],
+                ),
+                const Divider(color: Colors.black),
+                InkWell(
+                  onTap: (){
+                    // print("T");
+                  },
+                  child: Text(
+                    "How to get additional kilometers",
+                    style: AppStyles.textStyle.copyWith(
+                      color: AppStyles.primaryColor
+                    ),
+                  ),
+                )
+                //text
+              ],
+            ),
           )
         ],
       ),

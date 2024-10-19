@@ -81,7 +81,7 @@ class _HotelDetailsState extends State<HotelDetails> {
           SliverList(
             delegate: SliverChildListDelegate([
               Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: ExpandedTextWidget(
                     text:
                         hotelList[index]['detail'])
@@ -134,7 +134,7 @@ class _ExpandedTextWidgetState extends State<ExpandedTextWidget> {
     setState(() {
       isExpanded = !isExpanded;
     });
-    print(isExpanded);
+    // print(isExpanded);
   }
 
   @override
