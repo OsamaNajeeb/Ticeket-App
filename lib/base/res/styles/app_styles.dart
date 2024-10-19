@@ -14,6 +14,8 @@ class AppStyles {
   static Color circleCol = const Color(0xFF189999);
   static Color dotCol = const Color(0xFF8ACCF7);
   static Color planeTicketCol = const Color(0xFFBACCF7);
+  static Color preCumColor = const Color(0xFFFEF4F3);
+  static Color preCumColor2 = const Color(0xFF526799);
 
   static TextStyle textStyle =
       TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: textColor);

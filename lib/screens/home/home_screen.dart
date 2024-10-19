@@ -7,6 +7,8 @@ import 'package:ticket_app/base/widgets/app_double_text.dart';
 import 'package:ticket_app/base/widgets/ticket_view.dart';
 import 'package:ticket_app/screens/home/widgets/hotel.dart';
 
+import '../../base/widgets/heading_text.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -37,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         const SizedBox(
                           height: 5,
                         ),
-                        Text("Book Tickets", style: AppStyles.headLineStyle1)
+                        const HeadingText(text: "Book Tickets", isColor: false),
                       ],
                     ),
                     Container(
@@ -105,7 +107,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: hotelList
-                          .map((singleHotel) => Hotel(hotel: singleHotel))
+                          .take(2)
+                          .map((singleHotel) => GestureDetector(
+                              child: GestureDetector(
+                                  onTap: () {
+                                    var index = hotelList.indexOf(singleHotel);
+                                    Navigator.pushNamed(
+                                        context, "/hotel_details",
+                                        arguments: {"index": index});
+                                  },
+                                  child: Hotel(hotel: singleHotel))))
                           .toList(),
                     )),
               ],

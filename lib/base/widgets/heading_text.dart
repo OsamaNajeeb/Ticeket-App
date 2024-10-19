@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+
 import '../res/styles/app_styles.dart';
 
-class TextStyleFourth extends StatelessWidget {
+class HeadingText extends StatelessWidget {
+
   final String text;
   final TextAlign align;
   final bool? isColor;
-  const TextStyleFourth(
+  const HeadingText(
       {super.key,
-      required this.text,
-      this.align = TextAlign.start,
-      this.isColor});
+        required this.text,
+        this.align = TextAlign.start,
+        this.isColor});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +19,8 @@ class TextStyleFourth extends StatelessWidget {
       text,
       textAlign: align,
       style: isColor == null
-          ? AppStyles.headLineStyle4.copyWith(color: Colors.white)
-          : AppStyles.headLineStyle4,
+          ? AppStyles.headLineStyle1.copyWith(color: Colors.white)
+          : AppStyles.headLineStyle1,
     );
   }
 }
